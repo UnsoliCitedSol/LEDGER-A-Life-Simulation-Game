@@ -1,24 +1,18 @@
 const CACHE_NAME = 'ledger-game-v1';
 const ASSETS = [
-  './',
-  './index.html',
-  './manifest.json'
+  '/LEDGER-A-Life-Simulation-Game/',
+  '/LEDGER-A-Life-Simulation-Game/index.html',
+  '/LEDGER-A-Life-Simulation-Game/manifest.json'
 ];
 
-// Install the service worker and cache the files
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS);
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
   );
 });
 
-// Intercept network requests and serve from cache if offline
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
+    caches.match(event.request).then((response) => response || fetch(event.request))
   );
 });
