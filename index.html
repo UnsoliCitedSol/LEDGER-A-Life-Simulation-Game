@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<link rel="manifest" href="manifest.json">
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
